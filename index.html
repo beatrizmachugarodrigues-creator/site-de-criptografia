@@ -1,0 +1,52 @@
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criptografia e Hash</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="container">
+        <h1>Criptografia e Hash</h1>
+
+        <div class="card">
+            <label for="senha">Digite uma senha:</label>
+
+            <input
+                type="text"
+                id="senha"
+                placeholder="Digite sua senha"
+            >
+
+            <button onclick="processarSenha()">
+                Processar senha
+            </button>
+
+            <div class="resultado">
+                <p>
+                    <strong>Senha criptografada:</strong>
+                    <span id="criptografada">-</span>
+                </p>
+
+                <p>
+                    <strong>Hash:</strong>
+                    <span id="hash">-</span>
+                </p>
+
+                <p>
+                    <strong>Acesso:</strong>
+                    <span id="acesso">-</span>
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
+```

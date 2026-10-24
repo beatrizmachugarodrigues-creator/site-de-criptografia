@@ -1,0 +1,60 @@
+const dicionario = "qwertyuiopasdfghjklzxcvbnm";
+const senhaCadastrada = "marcelo123";
+
+// Codifica as letras minúsculas
+function codifica(senha) {
+    let senhaCriptografada = "";
+
+    for (const letra of senha) {
+        if (letra >= "a" && letra <= "z") {
+            const posicao = letra.charCodeAt(0) - 97;
+            senhaCriptografada += dicionario[posicao];
+        } else {
+            senhaCriptografada += letra;
+        }
+    }
+
+    return senhaCriptografada;
+}
+
+// Calcula um hash simples para o exercício
+function calculaHash(senha) {
+    let valor = 0;
+
+    for (const letra of senha) {
+        valor = (valor * 12 + letra.charCodeAt(0)) >>> 0;
+    }
+
+    return valor;
+}
+
+// Processa a senha digitada
+function processarSenha() {
+    const campoSenha = document.getElementById("senha");
+    const senhaDigitada = campoSenha.value;
+
+    if (senhaDigitada.length === 0) {
+        alert("Digite uma senha.");
+        return;
+    }
+
+    const senhaCriptografada = codifica(senhaDigitada);
+    const hashDigitado = calculaHash(senhaDigitada);
+    const hashCadastrado = calculaHash(senhaCadastrada);
+
+    document.getElementById("criptografada").textContent =
+        senhaCriptografada;
+
+    document.getElementById("hash").textContent =
+        hashDigitado;
+
+    document.getElementById("acesso").textContent =
+        hashDigitado === hashCadastrado
+            ? "Acesso liberado"
+            : "Acesso negado";
+}
+
+document.getElementById("botao").addEventListener(
+    "click",
+    processarSenha
+);
